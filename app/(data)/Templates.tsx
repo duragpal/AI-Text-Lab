@@ -365,7 +365,7 @@ export default [
     form: [
       {
         label: "Select platform",
-        field: "select",
+        field: "input",
         name: "platform",
         options: ["Facebook", "Twitter", "Instagram"],
         required: true,
