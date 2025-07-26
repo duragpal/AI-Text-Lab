@@ -7,18 +7,24 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Loader2Icon } from "lucide-react";
 
+
+type FormDataObject = { [key: string]: string };
+
 interface PROPS {
   selectedTemplate?: TEMPLATE;
-  userFormInput: (formData: any) => void;
+  
+  userFormInput: (formData: FormDataObject) => void; 
   loading: boolean;
 }
 
 function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
   
-  const [formData, setFormData] = useState<any>({});
+  
+  const [formData, setFormData] = useState<FormDataObject>({});
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    
     
     setFormData((prevData) => ({
       ...prevData,
@@ -51,7 +57,6 @@ function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
                 onChange={handleInputChange}
               />
             ) : item.field == "textarea" ? (
-              
               <Textarea
                 name={item.name}
                 required={item?.required}
