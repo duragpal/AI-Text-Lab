@@ -6,18 +6,27 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Loader2Icon } from "lucide-react";
+
 interface PROPS {
   selectedTemplate?: TEMPLATE;
-  userFormInput: any;
+  userFormInput: (formData: any) => void;
   loading: boolean;
 }
+
 function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
-  const [formData, setFormData] = useState<any>();
-  const handleInputChange = (e: any) => {
+  
+  const [formData, setFormData] = useState<any>({});
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
-  const onSubmit = (e: any) => {
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     userFormInput(formData);
   };
@@ -26,14 +35,14 @@ function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
     <div className="p-5 shadow-md border rounded-lg bg-white">
       {/* @ts-ignore */}
       <Image src={selectedTemplate?.icon} alt="icon" width={70} height={70} />
-      <h2 className="font-bold  text-2xl mb-2 text-blue-600">
+      <h2 className="font-bold text-2xl mb-2 text-blue-600">
         {selectedTemplate?.name}
       </h2>
-      <p className="text-grey-500 text-sm">{selectedTemplate?.desc}</p>
+      <p className="text-gray-500 text-sm">{selectedTemplate?.desc}</p>
 
       <form className="mt-6" onSubmit={onSubmit}>
         {selectedTemplate?.form?.map((item, index) => (
-          <div className="my-2 flex flex-col mb-7 gap-2">
+          <div key={index} className="my-2 flex flex-col mb-7 gap-2">
             <label className="font-bold">{item.label}</label>
             {item.field == "input" ? (
               <Input
@@ -42,12 +51,17 @@ function FormSection({ selectedTemplate, userFormInput, loading }: PROPS) {
                 onChange={handleInputChange}
               />
             ) : item.field == "textarea" ? (
-              <Textarea />
+              
+              <Textarea
+                name={item.name}
+                required={item?.required}
+                onChange={handleInputChange}
+              />
             ) : null}
           </div>
         ))}
         <Button type="submit" className="w-full py-6" disabled={loading}>
-          {loading && <Loader2Icon className="animate-spin" />}
+          {loading && <Loader2Icon className="animate-spin mr-2" />}
           Generate Content
         </Button>
       </form>

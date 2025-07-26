@@ -20,16 +20,36 @@ function CreateNewContent(props: PROPS) {
   );
   const [loading, setLoading] = useState(false);
   const [aiOutput, setAIOutput] = useState<string>("");
+  
   const generateAiContent = async (formData: any) => {
     setLoading(true);
-    const selectedPrompt = selectedTemplate?.aiPrompt;
-
-    const FinalAIPrompt = JSON.stringify(formData) + "," + selectedPrompt;
-    const result = await chatSession.sendMessage(FinalAIPrompt);
+  
+    const promptTemplate = selectedTemplate?.aiPromptTemplate;
+  
+    if (!promptTemplate) {
+      setAIOutput("Error: Prompt template not found for the selected item.");
+      setLoading(false);
+      return;
+    }
+  
+   
+    let finalPrompt = promptTemplate;
+   
+  console.log(formData);
+    
+    for (const key in formData) {
+      if (formData.hasOwnProperty(key)) {
+        const placeholder = `{${key}}`;
+        finalPrompt = finalPrompt.replace(new RegExp(placeholder, "g"), formData[key]);
+      }
+    }
+    console.log(finalPrompt);
+  
+    const result = await chatSession.sendMessage(finalPrompt);
     setAIOutput(result.response.text());
+    
     setLoading(false);
   };
-
   return (
     <div className="p-10">
       <Link href={"/dashboard"}>

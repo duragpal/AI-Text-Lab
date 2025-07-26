@@ -1,12 +1,19 @@
 export default [
+  // --- Blog Tools ---
   {
     name: "Blog Title",
-    desc: "An AI tool that generate blog title depends on yout blog information",
+    desc: "Generate a list of catchy and SEO-friendly blog titles based on your topic.",
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/4186/4186534.png",
-    aiPrompt:
-      "Give me 5 blog topic idea in bullet wise only based on give niche & outline and give me result in Rich text editor format",
     slug: "generate-blog-title",
+    aiPromptTemplate: `Act as a creative blog writer. Generate 5 catchy blog titles based on the provided niche and outline.
+
+**Niche:** {niche}
+**Outline:** {outline}
+
+**Instructions:**
+- Provide only a Markdown bulleted list of the 5 titles.
+- Do not add any extra text or explanations.`,
     form: [
       {
         label: "Enter your blog niche",
@@ -15,7 +22,7 @@ export default [
         required: true,
       },
       {
-        label: "Enter blog outline",
+        label: "Enter a brief blog outline (optional)",
         field: "textarea",
         name: "outline",
       },
@@ -23,12 +30,18 @@ export default [
   },
   {
     name: "Blog Content",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    category: "blog",
+    desc: "Generate a full blog post from a topic and outline, complete with headings and paragraphs.",
+    category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/4905/4905454.png",
     slug: "blog-content-generation",
-    aiPrompt:
-      "Generate Blog Content based on topic and outline in rich text editor format",
+    aiPromptTemplate: `Act as a professional blogger and SEO expert. Write a comprehensive and engaging blog post on the given topic, using the provided outline as a guide.
+
+**Topic:** {topic}
+**Outline:** {outline}
+
+**Instructions:**
+- Format the entire post in well-structured Markdown.
+- Use headings, paragraphs, and lists where appropriate.`,
     form: [
       {
         label: "Enter your blog topic",
@@ -37,7 +50,7 @@ export default [
         required: true,
       },
       {
-        label: "Enter blog Outline here",
+        label: "Enter a brief blog outline (optional)",
         field: "textarea",
         name: "outline",
       },
@@ -45,12 +58,17 @@ export default [
   },
   {
     name: "Blog Topic Ideas",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
+    desc: "Brainstorm a list of engaging blog post ideas based on your niche.",
     category: "Blog",
     icon: "https://cdn-icons-png.flaticon.com/128/11497/11497847.png",
     slug: "blog-topic-idea",
-    aiPrompt:
-      "Generate top 5 Blog Topic Ideas in bullet point only, (no Description) based on niche in rich text editor format",
+    aiPromptTemplate: `Act as a content strategist. Generate 5 creative and engaging blog topic ideas for the following niche.
+
+**Niche:** {niche}
+
+**Instructions:**
+- Provide only a Markdown bulleted list.
+- Do not write descriptions for the ideas, only the titles.`,
     form: [
       {
         label: "Enter your Niche",
@@ -60,87 +78,111 @@ export default [
       },
     ],
   },
+
+  // --- YouTube Tools ---
   {
-    name: "Youtube SEO Title",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    category: "Youtube Tools",
+    name: "YouTube SEO Title",
+    desc: "Generate viral, SEO-optimized titles for your YouTube videos.",
+    category: "YouTube Tools",
     icon: "https://cdn-icons-png.flaticon.com/128/402/402075.png",
     slug: "youtube-seo-title",
-    aiPrompt:
-      "Give me Best SEO optimized high ranked 5 title ideas bullet wise only bases on keywords and outline and give me result in HTML tags format",
+    aiPromptTemplate: `Act as a YouTube SEO expert. Generate 5 viral, SEO-optimized YouTube video titles based on the provided keywords and outline.
+
+**Keywords:** {keywords}
+**Outline:** {outline}
+
+**Instructions:**
+- Provide only a Markdown numbered list of the 5 titles.
+- The titles should be catchy and create curiosity.`,
     form: [
       {
-        label: "Enter your youtube video topic keyowords",
+        label: "Enter your video topic keywords",
         field: "input",
         name: "keywords",
         required: true,
       },
       {
-        label: "Enter youtube description Outline here",
+        label: "Enter a brief video outline (optional)",
         field: "textarea",
         name: "outline",
       },
     ],
   },
   {
-    name: "Youtube Description",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    category: "Youtube Tool",
+    name: "YouTube Description",
+    desc: "Create a compelling YouTube video description with emojis and relevant details.",
+    category: "YouTube Tool",
     icon: "https://cdn-icons-png.flaticon.com/128/2111/2111748.png",
     slug: "youtube-description",
-    aiPrompt:
-      "Generate Youtube description with emoji under 4-5 lines based on topic and outline in rich text editor format",
+    aiPromptTemplate: `Act as a YouTube content creator. Generate an engaging YouTube video description with relevant emojis based on the video topic and outline.
+
+**Topic:** {topic}
+**Outline:** {outline}
+
+**Instructions:**
+- Keep the description concise (4-5 lines).
+- Strategically include emojis to increase engagement.
+- Format the output in Markdown.`,
     form: [
       {
-        label: "Enter your blog topic/title",
+        label: "Enter your video topic/title",
         field: "input",
         name: "topic",
         required: true,
       },
       {
-        label: "Enter youtube Outline here",
+        label: "Enter a brief video outline (optional)",
         field: "textarea",
         name: "outline",
       },
     ],
   },
   {
-    name: "Youtube Tags",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    category: "Youtube Tool",
+    name: "YouTube Tags",
+    desc: "Generate a list of relevant, high-ranking tags for your YouTube video.",
+    category: "YouTube Tool",
     icon: "https://cdn-icons-png.flaticon.com/128/4674/4674918.png",
     slug: "youtube-tag",
+    aiPromptTemplate: `Act as a YouTube SEO expert. Generate 15 relevant YouTube tags based on the video title and outline.
 
-    aiPrompt:
-      "Generate 10 Youtube tags in bullet point based on title and outline in rich text editor format",
+**Title:** {title}
+**Outline:** {outline}
 
+**Instructions:**
+- Provide the tags as a single, comma-separated string (e.g., tag1, tag2, tag3).
+- Do not use bullet points or numbers.`,
     form: [
       {
-        label: "Enter your youtube title",
+        label: "Enter your YouTube video title",
         field: "input",
         name: "title",
         required: true,
       },
       {
-        label: "Enter youtube video Outline here (Optional)",
+        label: "Enter a brief video outline (optional)",
         field: "textarea",
         name: "outline",
       },
     ],
   },
 
+  // --- Writing & Rewriting Tools ---
   {
     name: "Rewrite Article (Plagiarism Free)",
-    desc: "Use this tool to rewrite existing Article or Blog Post which can bypass AI detectors and also make it plagiarism free.",
+    desc: "Rewrite an article to be unique and bypass AI detectors while preserving the core message.",
     icon: "https://cdn-icons-png.flaticon.com/128/3131/3131607.png",
     category: "Rewriting Tool",
     slug: "rewrite-article",
-    aiPrompt:
-      "Rewrite give article without any Plagiarism in rich text editor format",
+    aiPromptTemplate: `Act as a professional editor. Rewrite the following article to be unique and plagiarism-free while preserving the original meaning and tone.
+
+**Original Article:** {article}
+
+**Instructions:**
+- Format the output in clean Markdown.
+- Ensure the rewritten content is substantially different from the original to pass plagiarism checks.`,
     form: [
       {
-        label:
-          "🤖 Provide your Article/Blogpost or any other content to rewrite.",
+        label: "Paste your Article/Blog post or any other content to rewrite.",
         field: "textarea",
         name: "article",
         required: true,
@@ -149,46 +191,88 @@ export default [
   },
   {
     name: "Text Improver",
-    desc: "This handy tool refines your writing, eliminating errors and redundancies for a clear, readable result. It also offers a comprehensive tone analysis and suggests better word choices.",
+    desc: "Refine your writing by fixing grammar, eliminating errors, and improving word choices.",
     icon: "https://cdn-icons-png.flaticon.com/128/1686/1686815.png",
     category: "Writing Assistant",
     slug: "text-improver",
-    aiPrompt:
-      "Given textToImprove, Rewrite text without any grammar mistake and professionally in rich text editor format",
+    aiPromptTemplate: `Act as an expert English editor. Rewrite the following text to be grammatically perfect, clear, and professional.
+
+**Original Text:** {textToImprove}
+
+**Instructions:**
+- Correct all grammatical errors, spelling mistakes, and punctuation issues.
+- Improve sentence structure and word choice for clarity and impact.
+- Format the output in clean Markdown.`,
     form: [
       {
-        label: "Enter text that you want to re-write or improve",
+        label: "Enter text that you want to rewrite or improve",
         field: "textarea",
         name: "textToImprove",
-      },
-    ],
-  },
-  {
-    name: "Add Emojis to Text",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    icon: "https://cdn-icons-png.flaticon.com/128/2584/2584606.png",
-    category: "blog",
-    slug: "add-emoji-to-text",
-    aiPrompt:
-      "Add Emoji to outline text depends on outline and rewrite it in rich text editor format",
-    form: [
-      {
-        label: "Enter your text to add emojis",
-        field: "textarea",
-        name: "outline",
         required: true,
       },
     ],
   },
   {
-    name: "Instagram Post Generator",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
-    icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
-    category: "blog",
+    name: "Add Emojis to Text",
+    desc: "Add relevant and engaging emojis to your text to make it more visually appealing.",
+    icon: "https://cdn-icons-png.flaticon.com/128/2584/2584606.png",
+    category: "Fun Tool",
+    slug: "add-emoji-to-text",
+    aiPromptTemplate: `Rewrite the following text, adding relevant emojis to enhance its tone and readability.
 
+**Original Text:** {text}
+
+**Instructions:**
+- Integrate emojis naturally within the text.
+- Do not change the original meaning of the text.`,
+    form: [
+      {
+        label: "Enter your text to add emojis to",
+        field: "textarea",
+        name: "text",
+        required: true,
+      },
+    ],
+  },
+  {
+    name: "English Grammar Check",
+    desc: "Correct grammatical errors and improve the professionalism of your English text.",
+    icon: "https://cdn-icons-png.flaticon.com/128/12596/12596700.png",
+    category: "Writing Assistant",
+    slug: "english-grammer-checker",
+    aiPromptTemplate: `Act as an expert English proofreader. Correct all grammatical errors in the following text.
+
+**Original Text:** {inputText}
+
+**Instructions:**
+- Rewrite the text with perfect grammar.
+- Only output the corrected text.`,
+    form: [
+      {
+        label: "Enter text to correct the grammar",
+        field: "textarea",
+        name: "inputText",
+        required: true,
+      },
+    ],
+  },
+
+  // --- Social Media ---
+  {
+    name: "Instagram Post Generator",
+    desc: "Generate complete Instagram post captions based on your keywords.",
+    category: "Social Media",
+    icon: "https://cdn-icons-png.flaticon.com/128/15713/15713420.png",
     slug: "instagram-post-generator",
-    aiPrompt:
-      "Generate 3 Instagram post depends on a given keywords and give output in  in rich text editor format",
+    aiPromptTemplate: `Act as a social media manager. Generate 3 engaging Instagram post captions based on the following keywords.
+
+**Keywords:** {keywords}
+
+**Instructions:**
+- Each caption should have a different tone (e.g., funny, inspirational, informative).
+- Include relevant emojis and a call-to-action in each caption.
+- Include 3-5 relevant hashtags for each caption.
+- Format the output in Markdown, using headings for each post.`,
     form: [
       {
         label: "Enter Keywords for your post",
@@ -199,122 +283,126 @@ export default [
     ],
   },
   {
-    name: "Instagram Hash Tag Generator",
-    desc: "An AI tool that serves as your personal blog post title writer, generating catchy and viral-worthy titles in your chosen language.",
+    name: "Instagram Hashtag Generator",
+    desc: "Generate a list of trending and relevant hashtags for your Instagram posts.",
+    category: "Social Media",
     icon: "https://cdn-icons-png.flaticon.com/128/7045/7045432.png",
-    category: "blog",
-
     slug: "instagram-hash-tag-generator",
-    aiPrompt:
-      "Generate 15 Instagram hash tag depends on a given keywords and give output in  in rich text editor format",
+    aiPromptTemplate: `Act as an Instagram growth expert. Generate 15 relevant and trending hashtags based on the provided keywords.
+
+**Keywords:** {keywords}
+
+**Instructions:**
+- Provide the hashtags as a single, space-separated string starting with '#' (e.g., #hashtag1 #hashtag2 #hashtag3).
+- Do not use bullet points or commas.`,
     form: [
       {
-        label: "Enter Keywords for your instagram hastag",
+        label: "Enter Keywords for your Instagram hashtag",
         field: "input",
         name: "keywords",
         required: true,
       },
     ],
   },
-  {
-    name: "Instagram Post/Reel Idea",
-    desc: "An AI tool that generate New and trending instagram idea depends on your niche",
-    icon: "https://cdn-icons-png.flaticon.com/128/1029/1029183.png",
-    category: "instagram",
-
-    slug: "instagram-post-idea-generator",
-    aiPrompt:
-      "Generate 5-10 Instagram idea depends on niche with latest trend and give output in  in rich text editor format",
-    form: [
-      {
-        label: "Enter Keywords / Niche for your instagram idea",
-        field: "input",
-        name: "keywords",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "English Grammer Check",
-    desc: "AI Model to Correct your english grammer by providing the text",
-    icon: "https://cdn-icons-png.flaticon.com/128/12596/12596700.png",
-    category: "english",
-
-    slug: "english-grammer-checker",
-    aiPrompt:
-      "Rewrite the inputText by correcting the grammer and give output in  in rich text editor format",
-    form: [
-      {
-        label: "Enter text to correct the grammer",
-        field: "input",
-        name: "inputText",
-        required: true,
-      },
-    ],
-  },
+  
+  // --- Coding Tools ---
   {
     name: "Write Code",
-    desc: "AI Model to generate programming code in any language",
+    desc: "AI Model to generate programming code in any language.",
     icon: "https://cdn-icons-png.flaticon.com/128/6062/6062646.png",
     category: "Coding",
-
     slug: "write-code",
-    aiPrompt:
-      "Depends on user codeDescription write a code and give output in  in rich text editor format in code block ",
+    aiPromptTemplate: `Act as an expert {codeLanguage} developer. Your task is to write a clean, efficient code snippet in {codeLanguage} based on the user's request.
+
+**Request:** {codeDescription}
+
+**Output Instructions:**
+- Generate only the raw code.
+- Do not include any explanations or introductory text.
+- Format the entire response as a single Markdown code block with the correct language identifier.`,
     form: [
       {
-        label: "Enter description of code you want along with Programming Lang",
+        label: "Enter code description",
         field: "textarea",
-        name: "codeDesscripton",
+        name: "codeDescription",
+        required: true,
+      },
+      {
+        label: "Enter Programming Language",
+        field: "input",
+        name: "codeLanguage",
         required: true,
       },
     ],
   },
   {
     name: "Explain Code",
-    desc: "AI Model to explain programming code in any language",
+    desc: "Get a detailed, line-by-line explanation of any programming code snippet.",
     icon: "https://cdn-icons-png.flaticon.com/128/8488/8488751.png",
     category: "Coding",
-
     slug: "explain-code",
-    aiPrompt:
-      "Depends on user codeDescription explain code line by line and give output in  in rich text editor format in code block ",
+    aiPromptTemplate: `Act as a senior software developer and mentor. Explain the following code snippet line-by-line in a clear and concise way.
+
+**Code Snippet:**
+\`\`\`
+{codeToExplain}
+\`\`\`
+
+**Instructions:**
+- Provide the explanation in well-structured Markdown.
+- Break down complex parts into simple terms.
+- Use bullet points for line-by-line explanations.`,
     form: [
       {
         label: "Enter code which you want to understand",
         field: "textarea",
-        name: "codeDesscripton",
+        name: "codeToExplain",
         required: true,
       },
     ],
   },
   {
     name: "Code Bug Detector",
-    desc: "This tool analyzes your input, like error messages and code snippets, to pinpoint and fix bugs, offering detailed solutions and alternatives in a straightforward, user-friendly way.",
+    desc: "Analyze your code, find bugs, and get detailed solutions and fixes.",
     icon: "https://cdn-icons-png.flaticon.com/128/4426/4426267.png",
-    category: "code-bug-detector",
-
+    category: "Coding",
     slug: "code-bug-detector",
-    aiPrompt:
-      "Depends on user codeInput find bug in code and give solution and give output in  in rich text editor format in code block ",
+    aiPromptTemplate: `Act as an expert code debugger. Analyze the following code snippet to find any bugs or errors. Provide a detailed explanation of the bug and the corrected code.
+
+**Code with potential bug:**
+\`\`\`
+{codeInput}
+\`\`\`
+
+**Instructions:**
+- Clearly identify the bug(s).
+- Explain why it is a bug.
+- Provide the corrected, working code snippet in a Markdown code block.`,
     form: [
       {
-        label: "Enter code which you want to test bug",
+        label: "Enter code which you want to debug",
         field: "textarea",
         name: "codeInput",
         required: true,
       },
     ],
   },
+
+  // --- Marketing Tools ---
   {
     name: "Tagline Generator",
-    desc: "Struggling to find the perfect tagline for your brand? Let our AI-tool assist you in creating a tagline that stands out.",
+    desc: "Create catchy and memorable taglines for your brand or product.",
     icon: "https://cdn-icons-png.flaticon.com/128/2178/2178616.png",
-    category: "Marketting",
-
+    category: "Marketing",
     slug: "tagline-generator",
-    aiPrompt:
-      "Depends on user productName and outline generate catchy 5-10 tagline for the business product and give output  in rich text editor format ",
+    aiPromptTemplate: `Act as a senior branding strategist. Generate 10 catchy and memorable taglines for the business product described below.
+
+**Product/Brand Name:** {productName}
+**Product/Market Details:** {outline}
+
+**Instructions:**
+- The taglines should be short, impactful, and easy to remember.
+- Provide the output as a Markdown numbered list.`,
     form: [
       {
         label: "Product/Brand Name",
@@ -323,7 +411,7 @@ export default [
         required: true,
       },
       {
-        label: "What you are selling / Marketting",
+        label: "What are you selling/marketing?",
         field: "textarea",
         name: "outline",
         required: true,
@@ -332,13 +420,19 @@ export default [
   },
   {
     name: "Product Description",
-    desc: "This is your AI-powered SEO expert, creating captivating and keyword-rich e-commerce product descriptions to boost your online sales.",
+    desc: "Create captivating and keyword-rich e-commerce product descriptions.",
     icon: "https://cdn-icons-png.flaticon.com/128/679/679922.png",
-    category: "Marketting",
-
+    category: "Marketing",
     slug: "product-description",
-    aiPrompt:
-      "Depends on user productName and description generate small description for product for e-commer business give output  in rich text editor format  ",
+    aiPromptTemplate: `Act as an expert e-commerce copywriter. Write a compelling and SEO-friendly product description for the following product.
+
+**Product Name:** {productName}
+**Product Details:** {outline}
+
+**Instructions:**
+- The description should be persuasive and highlight key benefits.
+- Use a friendly and engaging tone.
+- Format the output in Markdown, including a bulleted list of key features.`,
     form: [
       {
         label: "Product Name",
@@ -347,606 +441,9 @@ export default [
         required: true,
       },
       {
-        label: "Product Details",
+        label: "Provide key product details and features",
         field: "textarea",
         name: "outline",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Social Media Post Creator",
-    desc: "Create engaging social media posts for various platforms.",
-    category: "Social Media",
-    icon: "https://cdn-icons-png.flaticon.com/128/1384/1384060.png",
-    slug: "social-media-post-creator",
-    aiPrompt:
-      "Generate an engaging social media post for the given platform and topic.",
-    form: [
-      {
-        label: "Select platform",
-        field: "input",
-        name: "platform",
-        options: ["Facebook", "Twitter", "Instagram"],
-        required: true,
-      },
-      { label: "Enter topic", field: "input", name: "topic", required: true },
-    ],
-  },
-  {
-    name: "Email Subject Line Generator",
-    desc: "Create compelling email subject lines to increase open rates.",
-    category: "Email",
-    icon: "https://cdn-icons-png.flaticon.com/128/732/732200.png",
-    slug: "email-subject-line-generator",
-    aiPrompt:
-      "Generate 5 compelling email subject lines based on the given email content.",
-    form: [
-      {
-        label: "Enter email content",
-        field: "textarea",
-        name: "content",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Product Description Generator",
-    desc: "Generate detailed product descriptions for your e-commerce site.",
-    category: "E-commerce",
-    icon: "https://cdn-icons-png.flaticon.com/128/263/263115.png",
-    slug: "product-description-generator",
-    aiPrompt:
-      "Generate a detailed product description based on the given product details.",
-    form: [
-      {
-        label: "Enter product name",
-        field: "input",
-        name: "product_name",
-        required: true,
-      },
-      {
-        label: "Enter product details",
-        field: "textarea",
-        name: "product_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Ad Copy Generator",
-    desc: "Create persuasive ad copy for your campaigns.",
-    category: "Advertising",
-    icon: "https://cdn-icons-png.flaticon.com/128/1008/1008987.png",
-    slug: "ad-copy-generator",
-    aiPrompt: "Generate persuasive ad copy for the given product or service.",
-    form: [
-      {
-        label: "Enter product/service name",
-        field: "input",
-        name: "product_service",
-        required: true,
-      },
-      {
-        label: "Enter target audience",
-        field: "input",
-        name: "target_audience",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Landing Page Content Generator",
-    desc: "Create optimized content for your landing pages.",
-    category: "Web",
-    icon: "https://cdn-icons-png.flaticon.com/128/2645/2645897.png",
-    slug: "landing-page-content-generator",
-    aiPrompt:
-      "Generate optimized content for a landing page based on the given details.",
-    form: [
-      {
-        label: "Enter product/service name",
-        field: "input",
-        name: "product_service",
-        required: true,
-      },
-      {
-        label: "Enter key features/benefits",
-        field: "textarea",
-        name: "features_benefits",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Resume Bullet Points Generator",
-    desc: "Generate impactful bullet points for your resume.",
-    category: "Career",
-    icon: "https://cdn-icons-png.flaticon.com/128/1674/1674651.png",
-    slug: "resume-bullet-points-generator",
-    aiPrompt:
-      "Generate impactful resume bullet points based on the given job role and achievements.",
-    form: [
-      {
-        label: "Enter job role",
-        field: "input",
-        name: "job_role",
-        required: true,
-      },
-      {
-        label: "Enter key achievements",
-        field: "textarea",
-        name: "achievements",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Cover Letter Generator",
-    desc: "Create personalized cover letters for job applications.",
-    category: "Career",
-    icon: "https://cdn-icons-png.flaticon.com/128/2633/2633366.png",
-    slug: "cover-letter-generator",
-    aiPrompt:
-      "Generate a personalized cover letter based on the given job role and company.",
-    form: [
-      {
-        label: "Enter job role",
-        field: "input",
-        name: "job_role",
-        required: true,
-      },
-      {
-        label: "Enter company name",
-        field: "input",
-        name: "company_name",
-        required: true,
-      },
-      {
-        label: "Enter your key skills",
-        field: "textarea",
-        name: "key_skills",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "YouTube Video Title Generator",
-    desc: "Generate catchy titles for your YouTube videos.",
-    category: "YouTube",
-    icon: "https://cdn-icons-png.flaticon.com/128/174/174883.png",
-    slug: "youtube-video-title-generator",
-    aiPrompt:
-      "Generate 5 catchy YouTube video titles based on the given video topic.",
-    form: [
-      {
-        label: "Enter video topic",
-        field: "input",
-        name: "video_topic",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "YouTube Video Description Generator",
-    desc: "Create detailed descriptions for your YouTube videos.",
-    category: "YouTube",
-    icon: "https://cdn-icons-png.flaticon.com/128/174/174883.png",
-    slug: "youtube-video-description-generator",
-    aiPrompt:
-      "Generate a detailed YouTube video description based on the given video topic.",
-    form: [
-      {
-        label: "Enter video topic",
-        field: "input",
-        name: "video_topic",
-        required: true,
-      },
-      {
-        label: "Enter key points",
-        field: "textarea",
-        name: "key_points",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Podcast Episode Title Generator",
-    desc: "Generate interesting titles for your podcast episodes.",
-    category: "Podcast",
-    icon: "https://cdn-icons-png.flaticon.com/128/2070/2070733.png",
-    slug: "podcast-episode-title-generator",
-    aiPrompt:
-      "Generate 5 interesting podcast episode titles based on the given topic.",
-    form: [
-      {
-        label: "Enter episode topic",
-        field: "input",
-        name: "episode_topic",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Podcast Episode Description Generator",
-    desc: "Create detailed descriptions for your podcast episodes.",
-    category: "Podcast",
-    icon: "https://cdn-icons-png.flaticon.com/128/2070/2070733.png",
-    slug: "podcast-episode-description-generator",
-    aiPrompt:
-      "Generate a detailed podcast episode description based on the given topic.",
-    form: [
-      {
-        label: "Enter episode topic",
-        field: "input",
-        name: "episode_topic",
-        required: true,
-      },
-      {
-        label: "Enter key points",
-        field: "textarea",
-        name: "key_points",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Instagram Caption Generator",
-    desc: "Create catchy captions for your Instagram posts.",
-    category: "Social Media",
-    icon: "https://cdn-icons-png.flaticon.com/128/174/174855.png",
-    slug: "instagram-caption-generator",
-    aiPrompt:
-      "Generate a catchy Instagram caption based on the given image description.",
-    form: [
-      {
-        label: "Enter image description",
-        field: "textarea",
-        name: "image_description",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Facebook Ad Copy Generator",
-    desc: "Create effective ad copy for your Facebook ads.",
-    category: "Social Media",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733547.png",
-    slug: "facebook-ad-copy-generator",
-    aiPrompt:
-      "Generate effective ad copy for a Facebook ad based on the given product or service.",
-    form: [
-      {
-        label: "Enter product/service name",
-        field: "input",
-        name: "product_service",
-        required: true,
-      },
-      {
-        label: "Enter target audience",
-        field: "input",
-        name: "target_audience",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Twitter Tweet Generator",
-    desc: "Create engaging tweets for your Twitter account.",
-    category: "Social Media",
-    icon: "https://cdn-icons-png.flaticon.com/128/733/733579.png",
-    slug: "twitter-tweet-generator",
-    aiPrompt: "Generate an engaging tweet based on the given topic.",
-    form: [
-      {
-        label: "Enter tweet topic",
-        field: "input",
-        name: "tweet_topic",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "LinkedIn Post Generator",
-    desc: "Create professional posts for your LinkedIn profile.",
-    category: "Social Media",
-    icon: "https://cdn-icons-png.flaticon.com/128/174/174857.png",
-    slug: "linkedin-post-generator",
-    aiPrompt: "Generate a professional LinkedIn post based on the given topic.",
-    form: [
-      {
-        label: "Enter post topic",
-        field: "input",
-        name: "post_topic",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Sales Email Generator",
-    desc: "Create persuasive sales emails to boost conversions.",
-    category: "Email",
-    icon: "https://cdn-icons-png.flaticon.com/128/732/732200.png",
-    slug: "sales-email-generator",
-    aiPrompt:
-      "Generate a persuasive sales email based on the given product or service.",
-    form: [
-      {
-        label: "Enter product/service name",
-        field: "input",
-        name: "product_service",
-        required: true,
-      },
-      {
-        label: "Enter target audience",
-        field: "input",
-        name: "target_audience",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Welcome Email Generator",
-    desc: "Create welcoming emails for new subscribers.",
-    category: "Email",
-    icon: "https://cdn-icons-png.flaticon.com/128/732/732200.png",
-    slug: "welcome-email-generator",
-    aiPrompt:
-      "Generate a welcoming email for new subscribers based on the given details.",
-    form: [
-      {
-        label: "Enter your brand name",
-        field: "input",
-        name: "brand_name",
-        required: true,
-      },
-      {
-        label: "Enter welcome message details",
-        field: "textarea",
-        name: "message_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Follow-up Email Generator",
-    desc: "Create effective follow-up emails for your clients.",
-    category: "Email",
-    icon: "https://cdn-icons-png.flaticon.com/128/732/732200.png",
-    slug: "follow-up-email-generator",
-    aiPrompt: "Generate a follow-up email based on the given context.",
-    form: [
-      {
-        label: "Enter context details",
-        field: "textarea",
-        name: "context_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Newsletter Content Generator",
-    desc: "Create engaging content for your newsletters.",
-    category: "Email",
-    icon: "https://cdn-icons-png.flaticon.com/128/732/732200.png",
-    slug: "newsletter-content-generator",
-    aiPrompt: "Generate engaging newsletter content based on the given topic.",
-    form: [
-      {
-        label: "Enter newsletter topic",
-        field: "input",
-        name: "newsletter_topic",
-        required: true,
-      },
-      {
-        label: "Enter key points",
-        field: "textarea",
-        name: "key_points",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Product Review Generator",
-    desc: "Generate detailed product reviews.",
-    category: "E-commerce",
-    icon: "https://cdn-icons-png.flaticon.com/128/263/263115.png",
-    slug: "product-review-generator",
-    aiPrompt:
-      "Generate a detailed product review based on the given product details.",
-    form: [
-      {
-        label: "Enter product name",
-        field: "input",
-        name: "product_name",
-        required: true,
-      },
-      {
-        label: "Enter product details",
-        field: "textarea",
-        name: "product_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Job Description Generator",
-    desc: "Create detailed job descriptions for open positions.",
-    category: "HR",
-    icon: "https://cdn-icons-png.flaticon.com/128/1674/1674651.png",
-    slug: "job-description-generator",
-    aiPrompt:
-      "Generate a detailed job description based on the given job role and responsibilities.",
-    form: [
-      {
-        label: "Enter job role",
-        field: "input",
-        name: "job_role",
-        required: true,
-      },
-      {
-        label: "Enter job responsibilities",
-        field: "textarea",
-        name: "job_responsibilities",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Interview Questions Generator",
-    desc: "Generate a list of interview questions for candidates.",
-    category: "HR",
-    icon: "https://cdn-icons-png.flaticon.com/128/1674/1674651.png",
-    slug: "interview-questions-generator",
-    aiPrompt:
-      "Generate a list of interview questions based on the given job role.",
-    form: [
-      {
-        label: "Enter job role",
-        field: "input",
-        name: "job_role",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Customer Testimonial Generator",
-    desc: "Create compelling customer testimonials.",
-    category: "Marketing",
-    icon: "https://cdn-icons-png.flaticon.com/128/1484/1484722.png",
-    slug: "customer-testimonial-generator",
-    aiPrompt:
-      "Generate a compelling customer testimonial based on the given customer feedback.",
-    form: [
-      {
-        label: "Enter customer feedback",
-        field: "textarea",
-        name: "customer_feedback",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Case Study Generator",
-    desc: "Create detailed case studies for your projects.",
-    category: "Marketing",
-    icon: "https://cdn-icons-png.flaticon.com/128/2645/2645897.png",
-    slug: "case-study-generator",
-    aiPrompt:
-      "Generate a detailed case study based on the given project details.",
-    form: [
-      {
-        label: "Enter project name",
-        field: "input",
-        name: "project_name",
-        required: true,
-      },
-      {
-        label: "Enter project details",
-        field: "textarea",
-        name: "project_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Business Plan Generator",
-    desc: "Create comprehensive business plans.",
-    category: "Business",
-    icon: "https://cdn-icons-png.flaticon.com/128/2461/2461800.png",
-    slug: "business-plan-generator",
-    aiPrompt:
-      "Generate a comprehensive business plan based on the given business details.",
-    form: [
-      {
-        label: "Enter business name",
-        field: "input",
-        name: "business_name",
-        required: true,
-      },
-      {
-        label: "Enter business details",
-        field: "textarea",
-        name: "business_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Mission Statement Generator",
-    desc: "Create a powerful mission statement for your business.",
-    category: "Business",
-    icon: "https://cdn-icons-png.flaticon.com/128/2461/2461800.png",
-    slug: "mission-statement-generator",
-    aiPrompt:
-      "Generate a mission statement based on the given business values and goals.",
-    form: [
-      {
-        label: "Enter business values",
-        field: "textarea",
-        name: "business_values",
-        required: true,
-      },
-      {
-        label: "Enter business goals",
-        field: "textarea",
-        name: "business_goals",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Value Proposition Generator",
-    desc: "Create a strong value proposition for your business.",
-    category: "Business",
-    icon: "https://cdn-icons-png.flaticon.com/128/2461/2461800.png",
-    slug: "value-proposition-generator",
-    aiPrompt:
-      "Generate a value proposition based on the given product/service details.",
-    form: [
-      {
-        label: "Enter product/service details",
-        field: "textarea",
-        name: "product_service_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Executive Summary Generator",
-    desc: "Create a concise executive summary for your business plan.",
-    category: "Business",
-    icon: "https://cdn-icons-png.flaticon.com/128/2461/2461800.png",
-    slug: "executive-summary-generator",
-    aiPrompt:
-      "Generate an executive summary based on the given business plan details.",
-    form: [
-      {
-        label: "Enter business plan details",
-        field: "textarea",
-        name: "business_plan_details",
-        required: true,
-      },
-    ],
-  },
-  {
-    name: "Company Profile Generator",
-    desc: "Create a detailed company profile.",
-    category: "Business",
-    icon: "https://cdn-icons-png.flaticon.com/128/2461/2461800.png",
-    slug: "company-profile-generator",
-    aiPrompt: "Generate a company profile based on the given company details.",
-    form: [
-      {
-        label: "Enter company name",
-        field: "input",
-        name: "company_name",
-        required: true,
-      },
-      {
-        label: "Enter company details",
-        field: "textarea",
-        name: "company_details",
         required: true,
       },
     ],

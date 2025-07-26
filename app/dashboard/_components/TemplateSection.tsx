@@ -8,7 +8,7 @@ export interface TEMPLATE {
   icon: string;
   category: string;
   slug: string;
-  aiPrompt: string;
+  aiPromptTemplate: string;
   form?: FORM[];
 }
 export interface FORM {
