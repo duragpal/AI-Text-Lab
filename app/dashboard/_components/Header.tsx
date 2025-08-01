@@ -1,3 +1,4 @@
+import { UserButton } from "@clerk/nextjs";
 import { Search } from "lucide-react";
 import React from "react";
 
@@ -12,10 +13,11 @@ function Header() {
           className="outline-none"
         ></input>
       </div>
-      <div>
+      <div className="flex gap-5 items-center">
         <h2 className="bg-blue-600 p-1 rounded-full text-xs text-white px-2">
           Subsribe for $5/Month
         </h2>
+        <UserButton></UserButton>
       </div>
     </div>
   );

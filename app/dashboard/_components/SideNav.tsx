@@ -3,7 +3,7 @@ import { FileClock, Home, Settings, WalletCards } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
-
+import UsageTrack from "./UsageTrack";
 function SideNav() {
   const path = usePathname(); //gives the path
 
@@ -30,7 +30,7 @@ function SideNav() {
     },
   ];
   return (
-    <div className="h-screen p-5 shadow-sm border bg-white">
+    <div className="relative h-screen p-4 shadow-sm border bg-white">
       <div className="flex justify-center">
         <Image src={"/logo.jpg"} alt="logo" width={120} height={100} />{" "}
       </div>
@@ -46,6 +46,9 @@ function SideNav() {
             <h2>{menu.name}</h2>
           </div>
         ))}
+      </div>
+      <div className="absolute bottom-10 left-0 w-full">
+        <UsageTrack />
       </div>
     </div>
   );
