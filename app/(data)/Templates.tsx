@@ -168,7 +168,7 @@ export default [
 
   // --- Writing & Rewriting Tools ---
   {
-    name: "Rewrite Article (Plagiarism Free)",
+    name: "Rewrite Article ",
     desc: "Rewrite an article to be unique and bypass AI detectors while preserving the core message.",
     icon: "https://cdn-icons-png.flaticon.com/128/3131/3131607.png",
     category: "Rewriting Tool",
@@ -448,4 +448,34 @@ export default [
       },
     ],
   },
+  {
+  name: "LinkedIn Post Generator",
+  desc: "Generate engaging and professional LinkedIn posts tailored to your audience and topic.",
+  category: "Social Media",
+  icon: "https://cdn-icons-png.flaticon.com/128/1384/1384014.png",
+  slug: "linkedin-post-generator",
+  aiPromptTemplate: `Act as a professional content marketer. Write a compelling LinkedIn post based on the given topic and audience.
+
+**Topic:** {topic}
+**Target Audience:** {audience}
+
+**Instructions:**
+- Keep the tone professional yet conversational.
+- Use short paragraphs and strong opening hooks.
+- Add 3-5 relevant hashtags at the end.
+- Format the output in Markdown.`,
+  form: [
+    {
+      label: "Enter post topic or idea",
+      field: "input",
+      name: "topic",
+      required: true,
+    },
+    {
+      label: "Describe your target audience (optional)",
+      field: "textarea",
+      name: "audience",
+    },
+  ],
+}
 ];
